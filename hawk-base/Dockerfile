@@ -1,10 +1,16 @@
 FROM ubuntu:14.04.4
 MAINTAINER Radoslav Minchev <rminchev@rnd-solutions.net>
 
-#install - curl & nodejs
+#install git
+RUN  apt-get update \
+   &&  apt-get install git -y
+
+
+#install - curl,  nodejs & bower
 RUN sudo apt-get install curl -y \
         && curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash - \
-        && sudo apt-get install -y nodejs
+        && sudo apt-get install -y nodejs \
+	&& npm install --global bower
  
 #install mono
 RUN apt-get update \

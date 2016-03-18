@@ -1,10 +1,7 @@
-FROM hawk-base:0.0.1
+FROM hawk-base:0.0.2
 MAINTAINER Radoslav Minchev <rminchev@rnd-solutions.net>
 
-#pre-setup
-RUN  apt-get update \ 
-   &&  apt-get install git -y
-
+#setup file structure
 RUN mkdir -p /usr/src/app/source /usr/src/app/build
 WORKDIR /usr/src/app/source
 COPY . /usr/src/app/source
@@ -18,10 +15,10 @@ RUN mkdir www
 #change working dir
 WORKDIR /usr/src/app/source/ui
 
-#install app dependences
-RUN npm install \
-    && npm install --global bower
+#install nodejs packages
+RUN npm install    
 
+#install bower packages
 RUN bower install --allow-root
 
 #build the app
