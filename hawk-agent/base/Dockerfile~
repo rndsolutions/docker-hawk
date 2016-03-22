@@ -14,7 +14,6 @@ RUN apt-get install oracle-java8-installer -y
     
     #&& apt-get install oracle-java8-set-default
    
-
 #install gradle
 RUN add-apt-repository ppa:cwchien/gradle \
     && apt-get update \
